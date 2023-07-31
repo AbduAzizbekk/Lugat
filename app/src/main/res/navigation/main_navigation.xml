@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/fragmentMenu">
+
+
+    <fragment
+        android:id="@+id/fragmentMenu"
+        android:name="uz.raxmonov.lessonn25.ui.main.fragmentlar.FragmentMenu"
+        android:label="fragment_menu"
+
+        tools:layout="@layout/fragment_menu" />
+    <fragment
+        android:id="@+id/fragmentFav"
+        android:name="uz.raxmonov.lessonn25.ui.main.fragmentlar.FragmentFav"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
+    <fragment
+        android:id="@+id/fragmentStory"
+        android:name="uz.raxmonov.lessonn25.ui.main.fragmentlar.FragmentStory"
+        android:label="fragment_story"
+        tools:layout="@layout/fragment_story" />
+</navigation>
