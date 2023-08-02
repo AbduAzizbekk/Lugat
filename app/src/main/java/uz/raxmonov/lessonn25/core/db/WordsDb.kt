@@ -26,7 +26,7 @@ class WordsDb private constructor(context: Context) : DbHelper(context, "diction
     }
 
     fun getUzbEng(): Cursor {
-        val query = "SELECT _id,uzb_word,eng_word,favourite FROM translate ORDER BY uzb_word ASC"
+        val query = "SELECT * FROM translate ORDER BY uzb_word ASC"
         return mDataBase.rawQuery(query, arrayOf())
     }
 
@@ -35,6 +35,7 @@ class WordsDb private constructor(context: Context) : DbHelper(context, "diction
         return mDataBase.rawQuery(query, arrayOf())
     }
 
+    //INSERT INTO translate (favourite) VALUES ("1")
     fun getStory(): Cursor {
         val query = "SELECT * FROM translate WHERE last_used"
         return mDataBase.rawQuery(query, arrayOf())

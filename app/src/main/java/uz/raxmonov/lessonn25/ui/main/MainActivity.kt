@@ -13,14 +13,13 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-    lateinit var onClick: (Int) -> Unit
     private lateinit var adapter: WordsAdapter
     private var count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         binding.menuNavigation.setupWithNavController(findNavController(R.id.navig))
-        val cursor = WordsDb.getInstance()!!.getEngUzb()
+        val cursor = WordsDb.getInstance()!!.getUzbEng()
         adapter = WordsAdapter(this, cursor)
         binding.dictionary.adapter = adapter
 
@@ -28,17 +27,18 @@ class MainActivity : AppCompatActivity() {
             count++
             if (count % 2 == 0) {
                 binding.change.text = "Uzb Eng"
-                val cursor = WordsDb.getInstance()!!.getEngUzb()
-                onClick.invoke(count)
-                adapter.changeCursor(cursor)
-            } else {
-
-                binding.change.text = "Eng Uzb"
                 val cursor = WordsDb.getInstance()!!.getUzbEng()
-                onClick.invoke(count)
                 adapter.changeCursor(cursor)
-            }
+                adapter = WordsAdapter(this, cursor)
+                binding.dictionary.adapter = adapter
 
+            } else {
+                binding.change.text = "Eng Uzb"
+                val cursor = WordsDb.getInstance()!!.getEngUzb()
+                adapter.changeCursor(cursor)
+                adapter = WordsAdapter(this, cursor)
+                binding.dictionary.adapter = adapter
+            }
         }
     }
 }

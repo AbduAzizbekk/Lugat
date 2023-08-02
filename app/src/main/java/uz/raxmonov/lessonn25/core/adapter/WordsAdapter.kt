@@ -17,11 +17,7 @@ class WordsAdapter(context: Context, cursor: Cursor) : CursorAdapter(context, cu
 
     var co = 0
     override fun newView(context: Context, cursor: Cursor?, parent: ViewGroup?): View {
-
-
         return LayoutInflater.from(context).inflate(R.layout.item_words, parent, false)
-
-
     }
 
     override fun bindView(view: View, context: Context, cursor: Cursor) {
@@ -44,7 +40,7 @@ class WordsAdapter(context: Context, cursor: Cursor) : CursorAdapter(context, cu
         }
     }
 
-    private fun getWordData(cursor: Cursor): WordsModel {
+    fun getWordData(cursor: Cursor): WordsModel {
 
         return WordsModel(
             _id = cursor.getInt(0),
