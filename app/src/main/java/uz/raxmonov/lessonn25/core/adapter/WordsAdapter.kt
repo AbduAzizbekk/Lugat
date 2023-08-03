@@ -26,8 +26,8 @@ class WordsAdapter(context: Context, cursor: Cursor) : CursorAdapter(context, cu
         val favouriteView: ImageButton = view.findViewById(R.id.fav)
         val wordModel = getWordData(cursor)
 
-        textView.text = wordModel.word
-        translateView.text = wordModel.translate
+        textView.text = wordModel.uzbek
+        translateView.text = wordModel.english
 
         favouriteView.setOnClickListener {
             co++
@@ -44,10 +44,12 @@ class WordsAdapter(context: Context, cursor: Cursor) : CursorAdapter(context, cu
 
         return WordsModel(
             _id = cursor.getInt(0),
-            word = cursor.getString(1),
-            translate = cursor.getString(2),
-            favourite = cursor.getInt(3),
-            lastUsed = 4
+            english = cursor.getString(1),
+            type = cursor.getInt(2),
+            transcript = cursor.getString(3),
+            uzbek = cursor.getString(4),
+            isFav = cursor.getInt(5),
+            isHistory = cursor.getInt(6)
         )
     }
 }

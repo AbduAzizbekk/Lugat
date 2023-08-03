@@ -21,23 +21,27 @@ class WordsDb private constructor(context: Context) : DbHelper(context, "diction
 
 
     fun getEngUzb(): Cursor {
-        val query = "SELECT * FROM translate ORDER BY eng_word ASC"
+        val query = "SELECT * FROM dictionary ORDER BY uzbek ASC"
         return mDataBase.rawQuery(query, arrayOf())
     }
 
     fun getUzbEng(): Cursor {
-        val query = "SELECT * FROM translate ORDER BY uzb_word ASC"
+        val query = "SELECT * FROM dictionary ORDER BY english ASC"
         return mDataBase.rawQuery(query, arrayOf())
     }
 
     fun getFav(): Cursor {
-        val query = "SELECT * FROM translate WHERE favourite=1"
+        val query = "SELECT * FROM dictionary WHERE isFav=1"
         return mDataBase.rawQuery(query, arrayOf())
     }
 
-    //INSERT INTO translate (favourite) VALUES ("1")
+    //    fun setIsFav(cursor: Cursor): Cursor? {
+//        val query = "UPDATE dictionary SET isFav=\"+998947201080\" WHERE name=$cursor"
+//        return mDataBase.rawQuery(query, arrayOf())
+//    }
+//    //
     fun getStory(): Cursor {
-        val query = "SELECT * FROM translate WHERE last_used"
+        val query = "SELECT * FROM dictionary WHERE isHistory"
         return mDataBase.rawQuery(query, arrayOf())
     }
 }
